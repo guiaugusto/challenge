@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Profile name:</strong>
+  <%= @profile.profile_name %>
+</p>
+
+<p>
+  <strong>Github address:</strong>
+  <%= @profile.github_address %>
+</p>
+
+<p>
+  <strong>Github username:</strong>
+  <%= @profile.github_username %>
+</p>
+
+<p>
+  <strong>Amount of followers:</strong>
+  <%= @profile.amount_of_followers %>
+</p>
+
+<p>
+  <strong>Amount of following:</strong>
+  <%= @profile.amount_of_following %>
+</p>
+
+<p>
+  <strong>Amount stars:</strong>
+  <%= @profile.amount_stars %>
+</p>
+
+<p>
+  <strong>Amount contributions:</strong>
+  <%= @profile.amount_contributions %>
+</p>
+
+<p>
+  <strong>Github profile image:</strong>
+  <%= @profile.github_profile_image %>
+</p>
+
+<%= link_to 'Edit', edit_profile_path(@profile) %> |
+<%= link_to 'Back', profiles_path %>
