@@ -4,7 +4,7 @@ class ProfilesController < ApplicationController
   # GET /profiles
   # GET /profiles.json
   def index
-    @profiles = Profile.all
+    @profiles = Profile.search(params[:search])
   end
 
   # GET /profiles/1
@@ -69,7 +69,17 @@ class ProfilesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def profile_params
-      params.require(:profile).permit(:profile_name, :github_address, :github_username, :amount_of_followers, :amount_of_following, :amount_stars, :amount_contributions, :github_profile_image)
+      params.require(:profile).permit(
+        :profile_name,
+        :github_address,
+        :github_username,
+        :amount_of_followers,
+        :amount_of_following,
+        :amount_stars,
+        :amount_contributions,
+        :github_profile_image,
+        :search
+      )
     end
 
     def scrape(params)
