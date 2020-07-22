@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  </head>
+  <body>
+    <div class="card" style="width: 12rem;">
+      <% if profile.github_profile_image %>
+        <img class="card-img-top" src="<%= profile.github_profile_image %>" alt="User image">
+      <% end %>
+      <div class="card-body">
+        <h5 class="card-title"><%= profile.profile_name %></h5>
+        <p class="card-text"><%= profile.github_address %></p>
+        <td><%= link_to 'Visualizar', profile %></td>
+        <td><%= link_to 'Editar', edit_profile_path(profile) %></td>
+      </div>
+    </div>
+    <%= yield %>
+  </body>
+  <style>
+  </style>
+</html>
