@@ -13,6 +13,9 @@ class ProfileSpider
     profile_params[:github_username] = container.css("span[@class='p-nickname vcard-username d-block']")&.text&.squish
     profile_params[:github_profile_image] = container.css("img[@class='avatar avatar-user width-full border bg-white']").attr('src').text&.squish
 
+    profile_params[:organization] = container.css("span[@class='p-org']").css("a[@class='user-mention']")&.text&.squish
+    profile_params[:location] = container.css("span[@class='p-label']")&.text&.squish
+
     followers = container.css("a[@href='/#{profile_params[:github_username]}?tab=followers']")
     following = container.css("a[@href='/#{profile_params[:github_username]}?tab=following']")
     stars = container.css("a[@href='/#{profile_params[:github_username]}?tab=stars']")

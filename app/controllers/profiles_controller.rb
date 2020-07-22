@@ -78,6 +78,8 @@ class ProfilesController < ApplicationController
         :amount_stars,
         :amount_contributions,
         :github_profile_image,
+        :organization,
+        :location,
         :search
       )
     end
