@@ -1,7 +1,7 @@
 require 'nokogiri'
 require 'open-uri'
 
-class ProfileSpider 
+class ProfileSpider
 
   def self.scrape(url, profile_name)
     profile_params = {}
@@ -11,7 +11,9 @@ class ProfileSpider
     profile_params[:profile_name] = profile_name
     profile_params[:github_address] = url
     profile_params[:github_username] = container.css("span[@class='p-nickname vcard-username d-block']")&.text&.squish
-    profile_params[:github_profile_image] = container.css("img[@class='avatar avatar-user width-full border bg-white']").attr('src').text&.squish
+    
+    github_profile_url = container.css("img[@class='avatar avatar-user width-full border bg-white']").attr('src').text&.squish
+    profile_params[:github_profile_image] = Client.instance.bitly_client.shorten(long_url: github_profile_url).link
 
     profile_params[:organization] = container.css("span[@class='p-org']").css("a[@class='user-mention']")&.text&.squish
     profile_params[:location] = container.css("span[@class='p-label']")&.text&.squish
