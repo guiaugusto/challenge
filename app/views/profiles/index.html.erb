@@ -1,8 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<%= render 'partials/search' %>
-
-<h1>Profiles</h1>
+<%= render partial: 'partials/search', locals: { width: "10%", height: "10%" } %>
 
 <body>
   <div class="grid-container">
@@ -13,8 +11,6 @@
     <% end %>
   </div>
 </body>
-
-<br>
 
 <style>
   .grid-container {
