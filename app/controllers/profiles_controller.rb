@@ -65,7 +65,11 @@ class ProfilesController < ApplicationController
   def scan
     if set_profile
       profile_params = scrape({ github_address: @profile.github_address, profile_name: @profile.profile_name })
-      @profile.update(profile_params)
+      if @profile.update(profile_params)
+        redirect_to action: 'show', notice: 'Profile was successfully updated.'
+      else
+        redirect_to action: 'show', notice: 'An error occuried trying to rescan profile values.'
+      end
     end
   end
 
@@ -93,7 +97,8 @@ class ProfilesController < ApplicationController
     end
 
     def scrape(params)
-      response = ProfileSpider.scrape(params[:github_address], params[:profile_name])
+      spider = ProfileSpider.new
+      response = spider.scrape(params[:github_address], params[:profile_name])
     rescue StandardError => e
       puts("Error: #{e}")
     end
