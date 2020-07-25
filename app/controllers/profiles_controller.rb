@@ -40,8 +40,9 @@ class ProfilesController < ApplicationController
   # PATCH/PUT /profiles/1
   # PATCH/PUT /profiles/1.json
   def update
+    params = scrape(profile_params)
     respond_to do |format|
-      if @profile.update(profile_params)
+      if @profile.update(params)
         format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
         format.json { render :show, status: :ok, location: @profile }
       else
@@ -58,6 +59,13 @@ class ProfilesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to profiles_url, notice: 'Profile was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def scan
+    if set_profile
+      profile_params = scrape({ github_address: @profile.github_address, profile_name: @profile.profile_name })
+      @profile.update(profile_params)
     end
   end
 

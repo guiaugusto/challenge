@@ -50,5 +50,6 @@
   <%= @profile.location %>
 </p>
 
-<%= link_to 'Edit', edit_profile_path(@profile) %> |
-<%= link_to 'Back', profiles_path %>
+<%= button_to('Edit', edit_profile_path(@profile) ) %>
+<%= button_to('Back', profiles_path ) %>
+<%= button_to('Re-scan', { action: 'scan', profile_id: @profile }, method: :patch ) %>
