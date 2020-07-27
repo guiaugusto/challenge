@@ -1,55 +1,23 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Profile name:</strong>
-  <%= @profile.profile_name %>
-</p>
-
-<p>
-  <strong>Github address:</strong>
-  <%= @profile.github_address %>
-</p>
-
-<p>
-  <strong>Github username:</strong>
-  <%= @profile.github_username %>
-</p>
-
-<p>
-  <strong>Amount of followers:</strong>
-  <%= @profile.amount_of_followers %>
-</p>
-
-<p>
-  <strong>Amount of following:</strong>
-  <%= @profile.amount_of_following %>
-</p>
-
-<p>
-  <strong>Amount stars:</strong>
-  <%= @profile.amount_stars %>
-</p>
-
-<p>
-  <strong>Amount contributions:</strong>
-  <%= @profile.amount_contributions %>
-</p>
-
-<p>
-  <strong>Github profile image:</strong>
-  <%= @profile.github_profile_image %>
-</p>
-
-<p>
-  <strong>Organization</strong>
-  <%= @profile.organization %>
-</p>
-
-<p>
-  <strong>Location</strong>
-  <%= @profile.location %>
-</p>
-
-<%= button_to('Edit', edit_profile_path(@profile) ) %>
-<%= button_to('Back', profiles_path ) %>
-<%= button_to('Re-scan', { action: 'scan', profile_id: @profile }, method: :patch ) %>
+<div class="card" style="width: 25rem; margin: 0 auto;">
+  <img class="card-img-top rounded-circle" src="<%= @profile.github_profile_image %>" alt="User image" style="width: 50%; margin: 0 auto; margin-top: 2em;">
+  <div class="card-body">
+    <h5 class="card-title" style="text-align: center;"><%= @profile.profile_name %></h5>
+    <p class="card-text" style="text-align: center;"><%= @profile.github_username %></p>
+  </div>
+  <ul class="list-group">
+    <li class="list-group-item"><b><%= @profile.amount_of_followers %></b> followers</li>
+    <li class="list-group-item"><b><%= @profile.amount_of_following %></b> following</li>
+    <li class="list-group-item"><b><%= @profile.amount_stars %></b> stars</li>
+    <li class="list-group-item"><b><%= @profile.amount_contributions %></b> contributions</li>
+    <li class="list-group-item"> <%= @profile.organization %> </li>
+    <li class="list-group-item"> <%= @profile.location %> </li>
+    <li class="list-group-item"> <%= @profile.github_address %> </li>
+  </ul>
+  <div class="card-body btn-group" style="margin: 0 auto;">
+    <%= button_to('Rescan', { action: 'scan', profile_id: @profile }, method: :patch, class: "btn btn-outline-success mr-5" ) %>
+    <%= button_to('Edit', edit_profile_path(@profile), { class: "btn btn-outline-secondary mr-5", method: :get } ) %>
+    <%= button_to('Back', profiles_path(@profile), { class: "btn btn-outline-danger", method: :get } ) %>
+  </div>
+</div>
