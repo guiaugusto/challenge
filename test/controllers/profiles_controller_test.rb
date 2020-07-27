@@ -10,7 +10,7 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     @profile.amount_of_following = 35
     @profile.amount_stars = 32
     @profile.amount_contributions = 622
-    @profile.github_profile_image = "avatar_image"
+    @profile.github_profile_image = "https://avatars2.githubusercontent.com/u/26308278?s=40&amp;v=4"
     @profile.shorten_url = "https://bit.ly/2EcJXww"
     @profile.organization = "@lappisunb"
     @profile.location = "Brazil"
