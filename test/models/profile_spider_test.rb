@@ -9,6 +9,7 @@ class ProfileSpiderTest < ActiveSupport::TestCase
     @source_code_1 = Nokogiri::HTML(@profile_page_1)
     @container_1 = @source_code_1.xpath("//div[@class='h-card mt-4 mt-md-n5']")
     @username_1 = "guiaugusto"
+    @address_1 = "https://github.com/guiaugusto"
     # Setup second profile page information
     @profile_page_2 = open("test/assets/example_without_org_and_location_fields.html")
     @source_code_2 = Nokogiri::HTML(@profile_page_2)
@@ -23,6 +24,11 @@ class ProfileSpiderTest < ActiveSupport::TestCase
   test "should get successfully the profile github image url" do
     github_profile_image = @spider.send(:github_profile_image, @container_1)
     assert github_profile_image
+  end
+
+  test "should get successfully the shorten url of github address" do
+    shorten_url = @spider.send(:github_shorten_url, @address_1)
+    assert shorten_url
   end
 
   test "should get successfully the profile organization" do
