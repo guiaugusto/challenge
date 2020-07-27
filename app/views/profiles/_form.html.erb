@@ -1,27 +1,33 @@
 <%= form_with(model: profile, local: true) do |form| %>
-  <% if profile.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
-
-      <ul>
-        <% profile.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+    <div class="card" style="margin-left: 25em; margin-right: 25em; margin-top: 5em;">
+      <h4 class="d-flex justify-content-center", style="margin-top: 1em;"><b><%= title %></b></h4>
+      <% if profile.errors.any? %>
+      <div class="d-flex justify-content-center" id="error_explanation">
+        <div style="margin-top: 1em; color: red;">
+          <h5><b><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</b></h2>
+          <ul>
+            <% profile.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+    <div class="form-group" style="margin: 2em;">
+      <%= form.label :profile_name %>
+      <%= form.text_field :profile_name, {class: "form-control"} %>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :profile_name %>
-    <%= form.text_field :profile_name %>
-  </div>
+    <div class="form-group", style="margin-left: 2em; margin-right: 2em;">
+      <%= form.label :github_address %>
+      <%= form.text_field :github_address, {class: "form-control"} %>
+    </div>
 
-  <div class="field">
-    <%= form.label :github_address %>
-    <%= form.text_field :github_address %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+    <%# <div class="btn-group" style="margin: 0 auto; margin-bottom: 1.5em;"> %>
+      <div class="card-body btn-group">
+      <%= form.submit button[0], { class: "mt-auto btn btn-outline-success mr-5 rounded-lg" } %>
+      <%= link_to button[1], profiles_path(@profile), { class: "mt-auto btn btn-outline-danger rounded-lg"} %>
+      </div>
+    <%# </div> %>
   </div>
 <% end %>
