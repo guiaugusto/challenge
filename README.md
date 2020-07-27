@@ -60,8 +60,6 @@ O sistema em si não possui muitas funcionalidades, porém tem alguns pontos imp
 
 * Está faltando o desenvolvimento de alguns testes e a aplicação de algum sistema que consiga medir a cobertura de código da aplicação como um todo.
 
-* Falta disposição de ícones para a melhora da interface gráfica (principalmente na página do perfil)
-
 ### Pontos de Melhoria
 
 O sistema no geral precisa de algumas melhorias, tanto na parte do front end na disposição dos componentes quanto no backend em relação a melhora do código em si, tratamento mais adequado de excessões e testes mais elaborados, procurando cobrir tanto os "caminhos felizes" quanto também os "caminhos tristes". Logo, para orientar melhor em alguns pontos de melhoria que poderiam ser aplicados, é importante:
@@ -76,4 +74,4 @@ O sistema no geral precisa de algumas melhorias, tanto na parte do front end na 
 
 5. Alguns commits não foram muito claros no que foi feito, principalmente no início do desenvolvimento, onde ficou um pouco confuso o que cada commit fazia e/ou se ele fazia apenas o especificado.
 
-6. Uso mesclado de tags html e método rails para um tipo de objeto, como para as imagens, por exemplo. Padronizar um tipo só ficaria mais agradável na leitura.
+6. Uso mesclado de tags html e métodos rails para um tipo de objeto, como para as imagens, por exemplo. Padronizar um tipo só ficaria mais agradável na leitura.
