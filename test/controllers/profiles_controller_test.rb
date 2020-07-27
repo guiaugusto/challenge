@@ -2,7 +2,22 @@ require 'test_helper'
 
 class ProfilesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @profile = profiles(:one)
+    @profile = Profile.new
+    @profile.profile_name = "Guilherme Augusto"
+    @profile.github_address = "https://www.github.com/guiaugusto"
+    @profile.github_username = "guiaugusto"
+    @profile.amount_of_followers = 28
+    @profile.amount_of_following = 35
+    @profile.amount_stars = 32
+    @profile.amount_contributions = 622
+    @profile.github_profile_image = "https://bit.ly/2EcJXww"
+    @profile.organization = "@lappisunb"
+    @profile.location = "Brazil"
+    @profile.save!
+    
+    @profile_name = "Guilherme Lacerda"
+    @github_address = "https://www.github.com/guilacerda"
+
   end
 
   test "should get index" do
@@ -17,7 +32,12 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create profile" do
     assert_difference('Profile.count') do
-      post profiles_url, params: { profile: { amount_contributions: @profile.amount_contributions, amount_of_followers: @profile.amount_of_followers, amount_of_following: @profile.amount_of_following, amount_stars: @profile.amount_stars, github_address: @profile.github_address, github_profile_image: @profile.github_profile_image, github_username: @profile.github_username, profile_name: @profile.profile_name } }
+      post profiles_url, params: {
+        profile: {
+          github_address: @github_address,
+          profile_name: @profile_name
+        }
+      }
     end
 
     assert_redirected_to profile_url(Profile.last)
