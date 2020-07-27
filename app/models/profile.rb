@@ -13,10 +13,10 @@ class Profile < ApplicationRecord
                     }
 
   def self.search(query)
-    if query.present? and !query[:search].empty?
-      @profiles = Profile.search_by_term(query[:search])
+    if query.nil? or query.empty?
+      @profiles = Profile.all
     else
-      @profiles = Profile.none
+      @profiles = Profile.search_by_term(query)
     end
   end
 

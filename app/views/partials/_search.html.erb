@@ -4,7 +4,7 @@
     <div class="search-container">
       <div class="input-group">
         <div class="input-group-append item-centralize">
-          <%= text_field(:search, :search, { class: "form-control py-2", style: "width: 30em;"}) %>
+          <%= text_field_tag(:search, params[:search], { class: "form-control py-2", style: "width: 30em;"}) %>
           <span>
             <%= submit_tag("Pesquisar", { class: "btn btn-outline-secondary" }) %>
           </span>
