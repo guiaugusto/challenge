@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <div class="card" style="width: 25rem; margin: 0 auto;">
   <img class="card-img-top rounded-circle" src="<%= @profile.github_profile_image %>" alt="User image" style="width: 50%; margin: 0 auto; margin-top: 2em;">
   <div class="card-body">
@@ -20,8 +18,9 @@
     <li class="list-group-item"><a href="<%= @profile.github_address %>" target="_blank"> <%= @profile.github_address %> </a></li>
   </ul>
   <div class="card-body btn-group" style="margin: 0 auto;">
-    <%= button_to('Rescan', { action: 'scan', profile_id: @profile }, method: :patch, class: "btn btn-outline-success mr-5" ) %>
-    <%= button_to('Edit', edit_profile_path(@profile), { class: "btn btn-outline-secondary mr-5", method: :get } ) %>
+    <%= button_to('Rescan', { action: 'scan', profile_id: @profile }, method: :patch, class: "btn btn-outline-success mr-3" ) %>
+    <%= button_to('Edit', edit_profile_path(@profile), { class: "btn btn-outline-secondary mr-3", method: :get } ) %>
+    <%= button_to('Destroy', @profile, { class: "btn btn-outline-danger mr-3", method: :delete, data: { confirm: 'Are you sure?' } } ) %>
     <%= button_to('Back', profiles_path(@profile), { class: "btn btn-outline-danger", method: :get } ) %>
   </div>
 </div>

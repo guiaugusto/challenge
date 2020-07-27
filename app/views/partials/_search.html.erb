@@ -7,10 +7,13 @@
         <div class="input-group-append item-centralize">
           <%= text_field_tag(:search, params[:search], { class: "form-control py-2", style: "width: 30em;"}) %>
           <span>
-            <%= submit_tag("Pesquisar", { class: "btn btn-outline-secondary" }) %>
+            <%= submit_tag("Search", { class: "btn btn-outline-secondary" }) %>
           </span>
         </div>
       </div>
+      <% if @profiles.present? %>
+        <%= label_tag(@profiles.count.to_s + " profiles found", nil, class: "label-centered text-muted" ) %>
+      <% end %>
     </div>
   <% end %>
   <%= yield %>
@@ -25,6 +28,10 @@
   }
   .block {
     display: block;
+  }
+  .label-centered {
+    margin-top: 1em;
+    margin-left: 41em;
   }
 </style>
 
