@@ -1,6 +1,1 @@
-<h1>Editing Profile</h1>
-
-<%= render 'form', profile: @profile %>
-
-<%= button_to 'Show', @profile %> |
-<%= button_to 'Back', profiles_path %>
+<%= render 'form', {profile: @profile, title: 'Editing Profile', button: ['Update', 'Back']} %>
