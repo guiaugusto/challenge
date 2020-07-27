@@ -10,9 +10,11 @@
       <% end %>
       <div class="card-body">
         <h5 class="card-title"><%= profile.profile_name %></h5>
-        <p class="card-text"><%= profile.github_address %></p>
-        <td><%= link_to 'Visualizar', profile %></td>
-        <td><%= link_to 'Editar', edit_profile_path(profile) %></td>
+        <h6 class="card-text"><%= profile.shorten_url %></h6>
+        <div class="card_body btn-group", style="margin: 0 auto;">
+          <td><%= button_to('Show', profile, { class: "btn btn-outline-success mr-3", method: :get } ) %></td>
+          <td><%= button_to('Edit', edit_profile_path(profile), { class: "btn btn-outline-secondary", method: :get }) %></td>
+        </div>
       </div>
     </div>
     <%= yield %>
