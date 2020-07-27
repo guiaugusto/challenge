@@ -15,6 +15,7 @@ class ProfileSpider
       github_address: url,
       github_username: github_username,
       github_profile_image: github_profile_image(container),
+      shorten_url: github_shorten_url(url),
       organization: organization(container),
       location: location(container),
       amount_of_followers: amount_of_followers(container, github_username),
@@ -38,7 +39,10 @@ class ProfileSpider
     github_profile_url = container.css(
       "img[@class='avatar avatar-user width-full border bg-white']"
     ).attr('src').text&.squish
-    Client.instance.bitly_client.shorten(long_url: github_profile_url).link
+  end
+
+  def github_shorten_url(url)
+    Client.instance.bitly_client.shorten(long_url: url).link
   end
 
   def organization(container)
