@@ -11,9 +11,13 @@
     <li class="list-group-item"><b><%= @profile.amount_of_following %></b> following</li>
     <li class="list-group-item"><b><%= @profile.amount_stars %></b> stars</li>
     <li class="list-group-item"><b><%= @profile.amount_contributions %></b> contributions</li>
-    <li class="list-group-item"> <%= @profile.organization %> </li>
+    <% if @profile.organization.present? %>
+      <li class="list-group-item"><%= @profile.organization %></li>
+    <% end %>
+    <% if @profile.location.present? %>
     <li class="list-group-item"> <%= @profile.location %> </li>
-    <li class="list-group-item"> <%= @profile.github_address %> </li>
+    <% end %>
+    <li class="list-group-item"><a href="<%= @profile.github_address %>" target="_blank"> <%= @profile.github_address %> </a></li>
   </ul>
   <div class="card-body btn-group" style="margin: 0 auto;">
     <%= button_to('Rescan', { action: 'scan', profile_id: @profile }, method: :patch, class: "btn btn-outline-success mr-5" ) %>
