@@ -3,7 +3,7 @@
 <%= render partial: 'partials/search', locals: { width: "10%", height: "10%" } %>
 
 <body>
-  <div class="grid-container">
+  <div class="list-group grid-container">
     <% @profiles.each do |profile| %>
       <div class="grid-item">
         <%= render partial: 'partials/userprofile', locals: { profile: profile } %>
@@ -15,8 +15,8 @@
 <style>
   .grid-container {
     display: grid;
-    grid-template-columns: auto auto auto auto auto auto auto auto;
-    padding: 10px;
+    grid-template-columns: auto auto auto auto auto;
+    padding: 1em;
     align-items: start;
   }
   .grid-item {
