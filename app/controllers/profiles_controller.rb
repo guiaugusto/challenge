@@ -99,7 +99,7 @@ class ProfilesController < ApplicationController
     def scrape(params)
       spider = ProfileSpider.new
       response = spider.scrape(params[:github_address], params[:profile_name])
-    rescue StandardError => e
+    rescue => e
       puts("Error: #{e}")
     end
 
