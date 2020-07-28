@@ -2,32 +2,25 @@
 
 ## Instalação
 
-Primeiramente, o sistema foi desenvolvido com o [Ruby](https://rvm.io/) na versão **2.7.0p0** e o Rails na versão **6.0.3.2**, em conjunto com o banco de dados [Postgresql](https://www.postgresql.org/download/linux/debian/) na versão **11.7**.
+Para a inicialização da aplicação é importante ter instalado o [docker](https://docs.docker.com/engine/install/debian/) e o [docker-compose](https://docs.docker.com/compose/install/) no seu sistema.
 
-Para inicializar a execução do sistema, é necessário executá-lo localmente, após a instalação das versões especificadas anteriormente. Para isso, primeiramente clone o projeto e entre dentro da pasta clonada:
+Posteriormente, inclua as configurações necessárias no arquivo ```env```, inserindo seu bitly token para permitir o encurtamento de url. Para saber como conseguir um token no bitly, acesse [aqui](https://support.bitly.com/hc/en-us/articles/230647907-How-do-I-generate-an-OAuth-access-token-for-the-Bitly-API-).
 
-```bash
-git clone https://github.com/guiaugusto/challenge
-cd challenge
+Configurado todo o processo, para inicializar a aplicação, execute:
+
+```
+sudo docker-compose up
 ```
 
-Agora, é importante que você tenha uma conta no Bitly para gerar o token para a utilização na api. Para saber mais como fazer isso, é possível, [clique aqui](https://dev.bitly.com/v4/#section/Application-using-a-single-account).
+Após esse processo, ao instalar todos as gems necessárias e subir os containers do banco de da aplicação, ela será inicializada na porta **3000**, podendo ser localmente acessada em http://localhost:3000/
 
-Quando o token for gerado, inclua-o no arquivo ```config/env.yml``` na chave **bitly_token**.
+## Testes
 
-Após estes passos iniciais, é importante instalar todas as _gems_ utilizadas no projeto. Para isso, execute o seguinte comando:
+Para executar os testes, entre dentro do container e execute:
 
-```bash
-bundle install
 ```
-
-Para inicializar o sistema, simplesmente execute:
-
-```bash
-rails server
+rails test
 ```
-
-Após esse processo, o sistema será inicializado na porta **3000**, podendo ser localmente acessada em http://localhost:3000/
 
 ## Solução
 
